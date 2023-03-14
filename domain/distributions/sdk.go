@@ -2,6 +2,18 @@ package distributions
 
 import "github.com/steve-care-software/libs/cryptography/hash"
 
+// NewBuilder creates a new builder
+func NewBuilder() Builder {
+	hashAdapter := hash.NewAdapter()
+	return createBuilder(hashAdapter)
+}
+
+// NewDistributionBuilder creates a new distribution builder
+func NewDistributionBuilder() DistributionBuilder {
+	hashAdapter := hash.NewAdapter()
+	return createDistributionBuilder(hashAdapter)
+}
+
 // Builder represents the distributions builder
 type Builder interface {
 	Create() Builder
@@ -11,6 +23,7 @@ type Builder interface {
 
 // Distributions represents distributions
 type Distributions interface {
+	Hash() hash.Hash
 	List() []Distribution
 }
 
