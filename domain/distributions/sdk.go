@@ -24,6 +24,7 @@ type Builder interface {
 // Distributions represents distributions
 type Distributions interface {
 	Hash() hash.Hash
+	Power() uint
 	List() []Distribution
 }
 

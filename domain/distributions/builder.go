@@ -53,5 +53,10 @@ func (app *builder) Now() (Distributions, error) {
 		return nil, err
 	}
 
-	return createDistributions(*pHash, app.list), nil
+	power := uint(0)
+	for _, oneDistribution := range app.list {
+		power += oneDistribution.Power()
+	}
+
+	return createDistributions(*pHash, power, app.list), nil
 }
